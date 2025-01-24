@@ -93,8 +93,11 @@ public:
 			if( filter.type == StringFilter::Type::kMagicKeyword )
 				lookupFilter.push_back( &filter );
 		}
-
-		auto activeEffects = a_actor->GetActiveEffectList();
+		
+		if (!a_actor)
+			return false;
+		
+		if (auto activeEffects = a_actor->GetActiveEffectList())
 		for( auto activeEffect : *activeEffects )
 		{
 			if( lookupFilter.size() == 0 )
