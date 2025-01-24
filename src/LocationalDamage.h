@@ -30,7 +30,7 @@ struct LocationalDamage
 		if( !a_actor )
 			return;
 
-		auto activeEffectList = a_actor->GetActiveEffectList();
+		if (auto activeEffectList = a_actor->GetActiveEffectList())
 		for( auto& activeEffect : *activeEffectList )
 		{
 			auto caster = activeEffect->caster ? activeEffect->caster.get() : NULL;
